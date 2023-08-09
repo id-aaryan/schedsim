@@ -36,7 +36,7 @@ func SingleQueue(lambda, mu, duration float64, genType, procType int) {
 	q := blocks.NewQueue()
 
 	// Create processors
-
+	
 	if procType == 0 {
 		for i := 0; i < cores; i++ {
 			p := &blocks.RTCProcessor{}
@@ -50,6 +50,12 @@ func SingleQueue(lambda, mu, duration float64, genType, procType int) {
 		p.AddInQueue(q)
 		p.SetReqDrain(stats)
 		engine.RegisterActor(p)
+	} else if procType == 2 {
+		// p := blocks.newLimitedPSProcessor()
+		// p.SetWorkerCount(cores)
+		// p.AddInQueue(q)
+		// p.SetReqDrain(stats)
+		// engine.RegisterActor(p)
 	}
 
 	g.AddOutQueue(q)

@@ -79,7 +79,7 @@ func (a *Actor) Wait(d float64) {
 // WaitInterruptible blocks the actor for a d interval, unless there is an
 // incoming request in the first input queue.
 // Returns true, nil if woken up by the timeout or false, ReqInterface
-// if woken up by the incoming req. If red is negative just read input queue
+// if woken up by the incoming req. If 'd' is negative just read input queue
 func (a *Actor) WaitInterruptible(d float64) (bool, ReqInterface) {
 	if a.inQueues[0].Len() > 0 {
 		return false, a.inQueues[0].Dequeue()
